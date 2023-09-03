@@ -9,6 +9,12 @@ import HabitTracker from "./HabitTracker";
 // import Habit from "./Habit";
 function App() {
   const [habits, setHabits] = useState(data);
+  //create habit handler
+  const addHabit = () => {};
+  //update habit handler
+  const updateHabit = () => {};
+  //delete habit handler
+  const deleteHabit = () => {};
   return (
     <div className="App">
       <Router>
