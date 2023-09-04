@@ -6,11 +6,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import HabitList from "./HabitList";
 import HabitTracker from "./HabitTracker";
+import CreateHabit from "./CreateHabit";
 // import Habit from "./Habit";
 function App() {
   const [habits, setHabits] = useState(data);
   //create habit handler
-  const addHabit = () => {};
+  const addHabit = (newHabit) => {
+    setHabits([...habits,newHabit])
+    console.log(habits)
+  };
+
   //update habit handler
   const updateHabit = () => {};
   //delete habit handler
@@ -27,6 +32,11 @@ function App() {
           <Route
             path="tracker/:habitId"
             element={<HabitTracker habits={habits} />}
+          />
+          <Route
+           exact
+            path="create"
+            element={<CreateHabit  handleAddHabit={addHabit}/>}
           />
         </Routes>
       </Router>
