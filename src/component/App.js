@@ -12,14 +12,16 @@ function App() {
   const [habits, setHabits] = useState(data);
   //create habit handler
   const addHabit = (newHabit) => {
-    setHabits([...habits,newHabit])
-    console.log(habits)
+    setHabits([...habits, newHabit]);
+    console.log(habits);
   };
 
   //update habit handler
   const updateHabit = () => {};
   //delete habit handler
-  const deleteHabit = () => {};
+  const removeHabit = (id) => {
+    setHabits(habits.filter((habit) => habit.id !== id));
+  };
   return (
     <div className="App">
       <Router>
@@ -30,13 +32,16 @@ function App() {
             element={<HabitList habits={habits} setHabits={setHabits} />}
           />
           <Route
+            exact
             path="tracker/:habitId"
-            element={<HabitTracker habits={habits} />}
+            element={
+              <HabitTracker habits={habits} handleRemoveHabit={removeHabit} />
+            }
           />
           <Route
-           exact
+            exact
             path="create"
-            element={<CreateHabit  handleAddHabit={addHabit}/>}
+            element={<CreateHabit handleAddHabit={addHabit} />}
           />
         </Routes>
       </Router>

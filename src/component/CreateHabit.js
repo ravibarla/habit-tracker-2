@@ -35,14 +35,18 @@ const CreateHabit = (props) => {
         },
       ],
     });
-    setName("enter a new habit:");
+
     navigate(-1);
   };
   return (
     <>
-      <Heading heading={heading} />
+      <Heading heading={heading}/>
       <form onSubmit={(e) => handleForm(e)}>
-        <input placeholder={name} onChange={(e) => setName(e.target.value)} />
+        <input
+          placeholder={name}
+          onChange={(e) => setName(e.target.value)}
+          type="text"
+        />
         <button>ADD</button>
       </form>
     </>
