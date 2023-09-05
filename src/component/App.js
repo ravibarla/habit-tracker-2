@@ -10,27 +10,13 @@ import CreateHabit from "./CreateHabit";
 // import Habit from "./Habit";
 function App() {
   const [habits, setHabits] = useState(data);
-  const [status, setStatus] = useState(null);
-  const [newUpdateHistory, setNewUpdateHistory] = useState({});
+
   useEffect(() => console.log(habits), [habits]);
   //create habit handler
   const addHabit = (newHabit) => {
     setHabits([...habits, newHabit]);
     console.log(habits);
   };
-  //update status
-  // const updateStatus = (status) => {
-  //   console.log("current sattus :", status);
-
-  //   setStatus((status) => (status === "done" ? "not done" : "done"));
-  //   // setStatus("asvS");
-  //   // if (currentStatus === "done") {
-  //   // } else {
-  //   //   setStatus("done");
-  //   // }
-
-  //   console.log("status 1:", status);
-  // };
 
   //update habit handler
   const updateHabit = (id, date, currentStatus) => {
@@ -42,7 +28,7 @@ function App() {
             ...habit,
             updateHistory: habit.updateHistory.map((data) =>
               data.date === date
-                ? { ...data, status: newstatus } // Replace 20 with the desired marks
+                ? { ...data, status: newstatus } 
                 : data
             ),
           }

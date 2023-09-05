@@ -10,37 +10,38 @@ const CreateHabit = (props) => {
   const [name, setName] = useState("enter a new habit:");
   const navigate = useNavigate();
 
+  // Function to get a date string for the previous day
+  function getPreviousDay(date) {
+    const currentDate = new Date(date);
+    currentDate.setDate(currentDate.getDate() - 1);
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+    const day = String(currentDate.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  }
+
   const handleForm = (e) => {
     e.preventDefault();
+    const newSubArray = [];
+    const currentDate = new Date();
+    for (let i = 0; i < 7; i++) {
+      newSubArray.push({
+        date: getPreviousDay(currentDate).toISOString().split("T")[0], // Start with the current date
+        status: null,
+      });
+    }
     handleAddHabit({
       id: uniqueId,
       name,
       status: null,
-      updateHistory: [
-        {
-          date: "2023-09-04",
-          status: null,
-        },
-        {
-          date: "2023-09-03",
-          status: null,
-        },
-        {
-          date: "2023-09-02",
-          status: null,
-        },
-        {
-          date: "2023-09-01",
-          status: null,
-        },
-      ],
+      updateHistory: newSubArray,
     });
 
     navigate(-1);
   };
   return (
     <>
-      <Heading heading={heading}/>
+      <Heading heading={heading} />
       <form onSubmit={(e) => handleForm(e)}>
         <input
           placeholder={name}
