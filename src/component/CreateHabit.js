@@ -26,7 +26,7 @@ const CreateHabit = (props) => {
     const currentDate = new Date();
     for (let i = 0; i < 7; i++) {
       newSubArray.push({
-        date: getPreviousDay(currentDate).toISOString().split("T")[0], // Start with the current date
+        date: getPreviousDay(currentDate.toISOString().split("T")[0]), // Start with the current date
         status: null,
       });
     }
