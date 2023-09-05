@@ -29,6 +29,7 @@ const CreateHabit = (props) => {
         date: getPreviousDay(currentDate.toISOString().split("T")[0]), // Start with the current date
         status: null,
       });
+      currentDate.setDate(currentDate.getDate() - 1);
     }
     handleAddHabit({
       id: uniqueId,
