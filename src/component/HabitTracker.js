@@ -2,7 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import Heading from "./Heading";
 import HistoryCard from "./HistoryCard";
 const HabitTracker = (props) => {
-  const { habits, handleRemoveHabit } = props;
+  const { habits, handleRemoveHabit ,handleUpdateHabit} = props;
   const { habitId } = useParams();
   const selectedHabit = habits.filter((habit) => habit.id === habitId);
   // debugger;
@@ -18,7 +18,7 @@ const HabitTracker = (props) => {
           <Heading heading={selectedHabit[0].name} />
           <div className="d-flex justify-content-center">
             {selectedHabit[0].updateHistory.map((data) => (
-              <HistoryCard data={data} />
+              <HistoryCard data={data} handleUpdateHabit={handleUpdateHabit} />
             ))}
           </div>
           {/* <HistoryCard /> */}
