@@ -22,6 +22,10 @@ const CreateHabit = (props) => {
 
   const handleForm = (e) => {
     e.preventDefault();
+    //handle input validation
+    if (name === "enter a new habit:") {
+      alert("empty input");
+    }
     const newSubArray = [];
     const currentDate = new Date();
     for (let i = 0; i < 7; i++) {
